@@ -50,7 +50,7 @@ export const LinkGen = ({ link }) => {
     axios.post("http://localhost:8080",{
       originalURL: link
     }).then((response) => {
-      setData(response.data.data["_id"])
+      setData(response.data.data._id)
     }).catch((error) => {
       console.log(error)
     })
@@ -64,8 +64,8 @@ export const LinkGen = ({ link }) => {
       <div style={styles.content}>
         <div style={styles.key}>Богино холбоос:</div>
         <div style={styles.copyContainer}>
-          <a style={styles.info} target="_blank" href={`http://localhost:8080/${data}`}>http://localhost:8080/{data && data}</a>
-          <button style={styles.copyButton} onClick={()=>{navigator.clipboard.writeText(`http://localhost:8080/${data}`)}}>Хуулж авах</button>
+          <a style={styles.info} target="_blank" href={`${window.location.href}${data}`}>{window.location.href}{data}</a>
+          <button style={styles.copyButton} onClick={()=>{navigator.clipboard.writeText(`${window.location.href}${data}`)}}>Хуулж авах</button>
         </div>
       </div>
     </div>

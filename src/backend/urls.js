@@ -11,7 +11,10 @@ exports.getURLs = async (request, response, next) => {
 exports.redirect= async (request, response, next) => {
     const { id } = request.params
     const redir = await URLModel.findById(id)
-    response.redirect(redir.originalURL)
+    // response.redirect(redir.originalURL)
+    response
+    .status(200)
+    .json({data: redir})
 }
 
 exports.createURL = async (request, response, next) => {

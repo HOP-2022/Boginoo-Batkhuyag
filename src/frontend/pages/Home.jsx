@@ -1,6 +1,9 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {LogoSide} from '../assets/Logo.jsx'
 import {LinkGen} from '../components/LinkGen'
+import {Header, Footer} from '../components/Headers'
+import axios from 'axios'
+import { useParams } from "react-router-dom"
 import '../assets/Logo.css'
 import '../assets/Fonts.css'
 
@@ -71,9 +74,20 @@ const styles = {
 
 
 export const Home = () => {
+  const {id} = useParams()
   const [inputURL, setInputURL] = useState('')
   const [output, setOutput] = useState()
+  if(id){
+    axios.get(`http://localhost:8080/${id}`)
+    .then((response) => {
+      window.location.replace(response.data.data.originalURL)
+    }).catch((error) => {
+      window.location.replace('/')
+    })
+  }
   return (
+    <>
+    <Header/>
     <div style={styles.body}>
         <div style={styles.logo}>
           <div id='logoContainer'>
@@ -94,5 +108,7 @@ export const Home = () => {
         </form>
         {output}
     </div>
+    <Footer/>
+    </>
   )
 }
