@@ -1,0 +1,57 @@
+#logoContainer {
+    display:flex;
+    align-items: center;
+    justify-self: center;
+    justify-content: space-evenly;
+    height: 100%;
+    width: 50%;
+}
+
+
+#center {
+    position: absolute;
+    width: 25px;
+    height: 7.5px;
+    background-color: #02B589;
+    border-radius: 50px;
+    transition: transform .5s;
+}
+
+#centerLeft {
+    position: absolute;
+    width: 25px;
+    height: 7.5px;
+    background-color: #02B589;
+    border-radius: 50px;
+    transition: transform .5s;
+}
+#centerRight {
+    position: absolute;
+    width: 25px;
+    height: 7.5px;
+    background-color: #02B589;
+    border-radius: 50px;
+    transition: transform .5s;
+}
+#logoLeft {
+    transition: transform .5s;
+}
+#logoRight {
+    transform: rotateY(180deg);
+    transition: transform .5s;
+}
+
+#logoContainer:hover #logoLeft{
+    transform: translateX(-30px);
+}
+
+#logoContainer:hover #logoRight{
+    transform: translateX(30px) rotateY(180deg);
+}
+
+#logoContainer:hover #centerRight{
+    transform: translateX(35px);
+}
+#logoContainer:hover #centerLeft{
+    transform: translateX(-35px);
+}
