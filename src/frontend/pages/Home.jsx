@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {LogoSide} from '../assets/Logo.jsx'
-import {LinkGen} from '../components/LinkGen'
+import {LinkGen, LinkHistory} from '../components/LinkGen'
 import {Header, Footer} from '../components/Headers'
 import axios from 'axios'
 import { useParams } from "react-router-dom"
@@ -37,7 +37,7 @@ const styles = {
     display:'grid',
     justifySelf:'center',
     alignSelf:'start',
-    gridTemplateColumns:'69% 2% 29%',
+    gridTemplateColumns:'4.5% 69% 2% 20% 4.5%',
     width:'70%',
     height:'100%',
     gridRow:4
@@ -52,13 +52,13 @@ const styles = {
     border:'none',
     borderRadius:'50px',
     boxShadow: '0 1px 5px rgba(0,0,0,0.16)',
-    gridColumn:1,
+    gridColumn:2,
   },
   inputBtn:{
-    width:'70%',
+    width:'100%',
     height:'100%',
     border:'none',
-    gridColumn:3,
+    gridColumn:4,
     borderRadius:50,
     fontFamily:'Ubuntu',
     fontWeight:700,
@@ -77,6 +77,7 @@ export const Home = () => {
   const {id} = useParams()
   const [inputURL, setInputURL] = useState('')
   const [output, setOutput] = useState()
+  const [history, setHistory] = useState(false)
   if(id){
     axios.get(`http://localhost:8080/${id}`)
     .then((response) => {
@@ -90,7 +91,7 @@ export const Home = () => {
     <Header/>
     <div style={styles.body}>
         <div style={styles.logo}>
-          <div id='logoContainer'>
+          <div id='logoContainer' onClick={()=>{history ? setHistory(false) : setHistory(true)}}>
             <LogoSide id='logoLeft'/>
             <div id='centerLeft'></div>
             <div id='center'></div>
@@ -107,6 +108,7 @@ export const Home = () => {
           <button type='submit' style={styles.inputBtn}>БОГИНОСГОХ</button>
         </form>
         {output}
+        {history && <LinkHistory/>}
     </div>
     <Footer/>
     </>

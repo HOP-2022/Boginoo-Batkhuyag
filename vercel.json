@@ -1,24 +1,14 @@
 {
-    "version": 2,
-    "scope": "my_own_vercel_scope",
-    "github": {
-      "enabled": false
-    },
     "builds": [
-      {
+        {
         "src": "./src/backend/app.js",
         "use": "@now/node"
-      },
-      {
-        "src": "./*",
-        "use": "@now/static"
-      }
+        }
     ],
     "routes": [
-      { "src": "./(.*)", "dest": "./App.js" },
-      { "handle": "filesystem" },
-      { "src": "/assets/(.*)", "dest": "/dist/apps/react-app/assets/＄1" },
-      { "src": "/(.*).(js|css|ico)", "dest": "/dist/apps/react-app/＄1.＄2" },
-      { "src": "/(.*)", "dest": "./App.js" }
+        { 
+        "src": "/.*", 
+        "dest": "./src/backend/app.js" 
+        }
     ]
   }
