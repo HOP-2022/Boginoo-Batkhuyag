@@ -51,6 +51,7 @@ export const LinkGen = ({ link }) => {
       originalURL: link
     }).then((response) => {
       setData(response.data.data._id)
+      console.log("muli")
     }).catch((error) => {
       console.log(error)
     })

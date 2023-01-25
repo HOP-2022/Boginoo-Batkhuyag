@@ -102,6 +102,7 @@ export const Home = () => {
         </div>
         <form style={styles.main} onSubmit={(event)=>{
           event.preventDefault() 
+          console.log("submit")
           inputURL !== '' ? setOutput(<LinkGen link={inputURL}/>) : setOutput()
           }}>
           <input style={styles.input} onChange={(event)=>setInputURL(event.target.value)} placeholder='https://www.web-huudas.mn'></input>
